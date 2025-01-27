@@ -2626,7 +2626,11 @@ input, select, textarea {
 			input[type="reset"].primary:hover,
 			input[type="button"].primary:hover,
 			.button.primary:hover {
-				background-color: #FFFFFF;
+<<<<<<< HEAD
+				background-color: #ffffff;
+=======
+				background-color: #5ed0b1;
+>>>>>>> parent of 029e931 (Update main.css)
 			}
 
 			input[type="submit"].primary:active,

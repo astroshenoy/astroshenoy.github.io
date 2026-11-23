@@ -167,5 +167,50 @@ Website last updated on July 7 2025. <br>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
+
+
+			<style>
+			  .sparkle {
+			    position: fixed;
+			    pointer-events: none;
+			    z-index: 9999;
+			    transform-origin: center;
+			    animation: sparkle-pop 700ms linear forwards;
+			  }
+			  @keyframes sparkle-pop {
+			    0%   { transform: translate(-50%, -50%) scale(0) rotate(0deg);   opacity: 1; }
+			    35%  { transform: translate(-50%, -50%) scale(1) rotate(60deg);  opacity: 1; }
+			    100% { transform: translate(-50%, -30%) scale(0) rotate(130deg); opacity: 0; }
+			  }
+			  @media (prefers-reduced-motion: reduce) {
+			    .sparkle { display: none; }
+			  }
+			</style>
+			
+			<script>
+			(function () {
+			  var colors = ['#ffd84d', '#ff9ecd', '#8ed0ff'];
+			  var star = 'M12 0 L14.6 9.4 L24 12 L14.6 14.6 L12 24 L9.4 14.6 L0 12 L9.4 9.4 Z';
+			  var last = 0;
+			
+			  document.addEventListener('mousemove', function (e) {
+			    var now = Date.now();
+			    if (now - last < 45) return;
+			    last = now;
+			
+			    var size = 8 + Math.random() * 12;
+			    var s = document.createElement('div');
+			    s.className = 'sparkle';
+			    s.style.left = e.clientX + (Math.random() * 24 - 12) + 'px';
+			    s.style.top  = e.clientY + (Math.random() * 24 - 12) + 'px';
+			    s.innerHTML =
+			      '<svg viewBox="0 0 24 24" width="' + size + '" height="' + size + '">' +
+			      '<path d="' + star + '" fill="' + colors[Math.floor(Math.random() * colors.length)] + '"/></svg>';
+			
+			    document.body.appendChild(s);
+			    s.addEventListener('animationend', function () { s.remove(); });
+			  });
+			})();
+			</script>
 	</body>
 </html>
